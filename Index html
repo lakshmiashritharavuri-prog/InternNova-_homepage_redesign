@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InternNova | Launch Your Career With Real Skills</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#080c16',
+              card: '#0f172a',
+              accent: '#6366f1',
+              neon: '#8b5cf6',
+              cyan: '#06b6d4',
+              pink: '#ec4899'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-[#070b14] text-slate-100 font-sans min-h-screen selection:bg-indigo-500 selection:text-white relative overflow-x-hidden">
+
+  <!-- Ambient Background Glows -->
+  <div class="fixed top-[-10%] left-[-10%] w-[500px] h-[500px] bg-purple-600/15 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+  <div class="fixed bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-indigo-600/15 rounded-full blur-[160px] pointer-events-none -z-10"></div>
+
+  <!-- TOP NAVIGATION BAR -->
+  <header class="sticky top-0 z-40 backdrop-blur-xl bg-[#080c16]/80 border-b border-slate-800/80 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- LEFT SIDE: BURGER BUTTON + BRAND LOGO -->
+      <div class="flex items-center gap-4">
+        <!-- Hamburger Button on Top-Left -->
+        <button id="burgerBtn" class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-700/60 text-slate-200 hover:text-indigo-400 hover:border-indigo-500/50 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/50" aria-label="Open Menu">
+          <i class="fa-solid fa-bars-staggered text-xl"></i>
+        </button>
+
+        <!-- Brand Identity Logo -->
+        <a href="#hero" class="flex items-center gap-2.5 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center shadow-lg shadow-indigo-500/25 group-hover:scale-105 transition-transform">
+            <i class="fa-solid fa-rocket text-white text-lg"></i>
+          </div>
+          <div>
+            <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-indigo-200 to-indigo-400 bg-clip-text text-transparent">Intern<span class="text-pink-500">Nova</span></span>
+            <p class="text-[9px] uppercase tracking-wider text-slate-400 font-semibold leading-none">Launch Your Career</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- DESKTOP CENTER NAVIGATION LINKS -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
+        <a href="#hero" class="hover:text-indigo-400 transition-colors">Home</a>
+        <a href="#about" class="hover:text-indigo-400 transition-colors">About</a>
+        <a href="#domains" class="hover:text-indigo-400 transition-colors">Programs</a>
+        <a href="#dashboard" class="text-indigo-400 flex items-center gap-1.5 hover:text-indigo-300 transition-colors">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+          </span>
+          Dashboard
+        </a>
+        <a href="#workshops" class="hover:text-indigo-400 transition-colors">Workshops</a>
+        <a href="#testimonials" class="hover:text-indigo-400 transition-colors">Reviews</a>
+        <a href="#faq" class="hover:text-indigo-400 transition-colors">FAQ</a>
+      </nav>
+
+      <!-- RIGHT SIDE: QUICK ACTIONS -->
+      <div class="flex items-center gap-3">
+        <button id="notifBtn" class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-indigo-400 hover:border-slate-700 flex items-center justify-center transition-all relative">
+          <i class="fa-regular fa-bell"></i>
+          <span class="absolute top-2 right-2.5 w-2 h-2 bg-pink-500 rounded-full"></span>
+        </button>
+
+        <a href="#dashboard" class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-medium text-sm shadow-md shadow-indigo-600/30 transition-all hover:shadow-indigo-500/50">
+          <i class="fa-solid fa-gauge-high text-xs"></i>
+          <span>Intern Portal</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- OFFCANVAS SLIDEOUT DRAWER (TRIGGERED BY BURGER BUTTON) -->
+  <div id="drawerOverlay" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  
+  <aside id="sideDrawer" class="fixed top-0 left-0 h-full w-80 max-w-[85vw] bg-[#0c1222] border-r border-slate-800 z-50 -translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between shadow-2xl">
+    <div>
+      <!-- Drawer Header -->
+      <div class="p-6 border-b border-slate-800/80 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-pink-500 flex items-center justify-center shadow-md">
+            <i class="fa-solid fa-rocket text-white"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-base tracking-tight text-white">InternNova</h3>
+            <p class="text-[10px] text-indigo-400 font-medium">Student & Intern Portal</p>
+          </div>
+        </div>
+        <button id="closeDrawerBtn" class="w-8 h-8 rounded-lg bg-slate-800/70 text-slate-400 hover:text-white flex items-center justify-center hover:bg-slate-700">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Drawer Nav Links -->
+      <div class="py-4 px-3 space-y-1">
+        <p class="px-3 text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-2">Navigation</p>
+        <a href="#hero" class="drawer-link flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 font-medium text-sm transition-all">
+          <i class="fa-solid fa-house text-indigo-400 w-5"></i> Home
+        </a>
+        <a href="#about" class="drawer-link flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 font-medium text-sm transition-all">
+          <i class="fa-solid fa-circle-info text-cyan-400 w-5"></i> About InternNova
+        </a>
+        <a href="#domains" class="drawer-link flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 font-medium text-sm transition-all">
+          <i class="fa-solid fa-laptop-code text-pink-400 w-5"></i> Internship Domains
+        </a>
+        <a href="#dashboard" class="drawer-link flex items-center justify-between px-3.5 py-3 rounded-xl bg-indigo-600/15 border border-indigo-500/30 text-indigo-300 font-medium text-sm">
+          <div class="flex items-center gap-3.5">
+            <i class="fa-solid fa-chart-pie text-indigo-400 w-5"></i> Live Dashboard
+          </div>
+          <span class="text-[10px] px-2 py-0.5 rounded-full bg-indigo-500/30 text-indigo-300 uppercase font-bold">Portal</span>
+        </a>
+        <a href="#workshops" class="drawer-link flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 font-medium text-sm transition-all">
+          <i class="fa-solid fa-chalkboard-user text-amber-400 w-5"></i> Workshops & Events
+        </a>
+        <a href="#testimonials" class="drawer-link flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 font-medium text-sm transition-all">
+          <i class="fa-solid fa-star text-yellow-400 w-5"></i> Intern Testimonials
+        </a>
+        <a href="#faq" class="drawer-link flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 font-medium text-sm transition-all">
+          <i class="fa-solid fa-circle-question text-teal-400 w-5"></i> Help & FAQ
+        </a>
+      </div>
+    </div>
+
+    <!-- Drawer Quick Profile Card -->
+    <div class="p-4 m-3 rounded-2xl bg-slate-900/90 border border-slate-800/90 flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-pink-500 flex items-center justify-center font-bold text-white text-sm shadow">
+        IN
+      </div>
+      <div class="flex-1 min-w-0">
+        <p class="text-xs font-semibold text-white truncate">Intern Candidate</p>
+        <p class="text-[10px] text-slate-400 truncate">Web Development Track</p>
+      </div>
+      <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 ring-4 ring-emerald-500/20"></span>
+    </div>
+  </aside>
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="relative pt-12 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
+    <div class="text-center max-w-3xl mx-auto space-y-6">
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs font-semibold">
+        <span class="w-2 h-2 rounded-full bg-pink-500 animate-pulse"></span>
+        Cohort Admissions Open • Fall 2026 Edition
+      </div>
+      
+      <!-- Headline -->
+      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+        Master Real Skills. Build Projects.
+        <span class="block bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-500 bg-clip-text text-transparent">
+          Accelerate Your Career.
+        </span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+        InternNova bridges the gap between college curriculum and tech industry demands with verified hands-on internships, live code reviews, and recognized certificates.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+        <a href="#domains" class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold shadow-lg shadow-indigo-600/30 transition-all hover:scale-[1.02]">
+          Explore Internship Tracks
+        </a>
+        <a href="#dashboard" class="px-7 py-3.5 rounded-xl bg-slate-900 border border-slate-700/80 hover:border-indigo-500/60 text-slate-200 font-semibold hover:bg-slate-800/80 transition-all flex items-center gap-2">
+          <i class="fa-solid fa-table-columns text-indigo-400"></i>
+          Open Intern Dashboard
+        </a>
+      </div>
+    </div>
+
+    <!-- STATS HIGHLIGHT -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 max-w-5xl mx-auto">
+      <div class="glass-card p-5 rounded-2xl border border-slate-800/90 text-center">
+        <h3 class="text-3xl font-extrabold text-white">15,000+</h3>
+        <p class="text-xs text-slate-400 mt-1">Interns Enrolled</p>
+      </div>
+      <div class="glass-card p-5 rounded-2xl border border-slate-800/90 text-center">
+        <h3 class="text-3xl font-extrabold text-indigo-400">96.8%</h3>
+        <p class="text-xs text-slate-400 mt-1">Completion Rate</p>
+      </div>
+      <div class="glass-card p-5 rounded-2xl border border-slate-800/90 text-center">
+        <h3 class="text-3xl font-extrabold text-purple-400">300+</h3>
+        <p class="text-xs text-slate-400 mt-1">Hiring Partners</p>
+      </div>
+      <div class="glass-card p-5 rounded-2xl border border-slate-800/90 text-center">
+        <h3 class="text-3xl font-extrabold text-pink-400">4.9 / 5</h3>
+        <p class="text-xs text-slate-400 mt-1">Student Satisfaction</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE INTERN DASHBOARD (CORE FEATURE) -->
+  <section id="dashboard" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+      <div>
+        <span class="text-indigo-400 font-semibold text-xs tracking-wider uppercase">Unified Portal</span>
+        <h2 class="text-3xl font-extrabold text-white mt-1">Interactive Intern Dashboard</h2>
+        <p class="text-slate-400 text-sm mt-1">Track pending assignments, view live masterclasses, and download verified credentials.</p>
+      </div>
+
+      <!-- Dashboard Tab Navigation -->
+      <div class="flex p-1.5 bg-slate-900/90 border border-slate-800 rounded-2xl gap-1 self-start md:self-auto">
+        <button class="dash-tab active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2" data-target="tab-tasks">
+          <i class="fa-solid fa-list-check"></i> Tasks
+        </button>
+        <button class="dash-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-400 hover:text-white transition-all flex items-center gap-2" data-target="tab-schedule">
+          <i class="fa-regular fa-calendar-days"></i> Schedule
+        </button>
+        <button class="dash-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-400 hover:text-white transition-all flex items-center gap-2" data-target="tab-certificate">
+          <i class="fa-solid fa-award"></i> Certificate
+        </button>
+      </div>
+    </div>
+
+    <!-- DASHBOARD CONTAINER -->
+    <div class="glass-card rounded-3xl border border-slate-800/90 p-6 sm:p-8 bg-slate-900/60 backdrop-blur-xl relative shadow-2xl">
+      
+      <!-- TAB 1: TASKS & ASSIGNMENTS -->
+      <div id="tab-tasks" class="tab-content space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-slate-800">
+          <div>
+            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+              <i class="fa-solid fa-bars-progress text-indigo-400"></i> Ongoing Internship Tasks
+            </h3>
+            <p class="text-xs text-slate-400">Web Development Track • Month 1 Milestone</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-xs bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 px-3 py-1 rounded-full font-medium">
+              Overall Progress: 75%
+            </span>
+          </div>
+        </div>
+
+        <!-- Task List Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- Task 1: Active Submission -->
+          <div class="p-5 rounded-2xl bg-slate-950/70 border border-indigo-500/50 relative overflow-hidden shadow-lg shadow-indigo-950/40">
+            <div class="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-indigo-500 to-pink-500"></div>
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-pink-500/20 text-pink-400 border border-pink-500/30">Due Today</span>
+              <span class="text-xs text-slate-400">Task 04</span>
+            </div>
+            <h4 class="font-bold text-white text-base">Homepage UI/UX Redesign</h4>
+            <p class="text-xs text-slate-400 mt-1 line-clamp-2">Redesign InternNova homepage with modern responsive layout, top-left burger menu, and dashboard portal.</p>
+            
+            <div class="mt-4 pt-4 border-t border-slate-800/80 flex items-center justify-between">
+              <div class="text-[11px] text-slate-400">
+                <i class="fa-regular fa-clock text-pink-400 mr-1"></i> Due: Oct 13, 11:59 PM
+              </div>
+              <button onclick="openSubmitModal('Homepage UI/UX Redesign')" class="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-semibold shadow transition-all">
+                Submit Project
+              </button>
+            </div>
+          </div>
+
+          <!-- Task 2: Completed -->
+          <div class="p-5 rounded-2xl bg-slate-950/50 border border-slate-800/80 relative">
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Completed</span>
+              <span class="text-xs text-slate-400">Task 03</span>
+            </div>
+            <h4 class="font-bold text-white text-base">JavaScript DOM Dynamics</h4>
+            <p class="text-xs text-slate-400 mt-1 line-clamp-2">Interactive task board, filters, state validation and responsive event listeners.</p>
+            
+            <div class="mt-4 pt-4 border-t border-slate-800/80 flex items-center justify-between">
+              <div class="text-[11px] text-emerald-400 flex items-center gap-1">
+                <i class="fa-solid fa-circle-check"></i> Score: 98/100
+              </div>
+              <span class="text-xs text-slate-500">Reviewed by Mentor</span>
+            </div>
+          </div>
+
+          <!-- Task 3: Upcoming -->
+          <div class="p-5 rounded-2xl bg-slate-950/50 border border-slate-800/80 opacity-80">
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-800 text-slate-400">Upcoming</span>
+              <span class="text-xs text-slate-400">Task 05</span>
+            </div>
+            <h4 class="font-bold text-white text-base">API Integration & Authentication</h4>
+            <p class="text-xs text-slate-400 mt-1 line-clamp-2">Connect RESTful endpoints with mock JWT authorization and live data fetching.</p>
+            
+            <div class="mt-4 pt-4 border-t border-slate-800/80 flex items-center justify-between">
+              <div class="text-[11px] text-slate-500">
+                <i class="fa-regular fa-calendar mr-1"></i> Unlocks: Oct 18
+              </div>
+              <span class="text-xs text-slate-600">Locked</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: SCHEDULE & SESSIONS -->
+      <div id="tab-schedule" class="tab-content hidden space-y-6">
+        <div class="flex justify-between items-center pb-4 border-b border-slate-800">
+          <div>
+            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+              <i class="fa-solid fa-calendar-check text-purple-400"></i> Mentorship & Workshop Schedule
+            </h3>
+            <p class="text-xs text-slate-400">Live Google Meet and Code Review Syncs</p>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <!-- Event 1 -->
+          <div class="p-4 rounded-2xl bg-slate-950/60 border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:border-slate-700 transition-all">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex flex-col items-center justify-center text-center">
+                <span class="text-xs font-bold text-indigo-400">OCT</span>
+                <span class="text-base font-extrabold text-white leading-none">14</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-white
